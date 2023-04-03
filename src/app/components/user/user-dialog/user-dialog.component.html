@@ -1,0 +1,42 @@
+
+<span id="container">
+  <h1 *ngIf="!isChange" mat-dialog-title>Create Element</h1>
+  <h1 *ngIf="isChange" mat-dialog-title>Edit Element</h1>
+
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill" style="width:248px;">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="data.name">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="data.email">
+    </mat-form-field>
+
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Birthday</mat-label>
+      <input matInput [(ngModel)]="data.birthday">
+    </mat-form-field> -->
+
+    <mat-form-field appearance="fill">
+      <mat-label>Birthday</mat-label>
+      <input matInput
+             #resultPickerModel="ngModel"
+             [matDatepicker]="picker"
+             [(ngModel)]="data.birthday">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
+      <mat-label>State</mat-label>
+      <input matInput [(ngModel)]="data.state">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button *ngIf="!isChange" [mat-dialog-close]="data" cdkFocusInitial>Create</button>
+    <button mat-button *ngIf="isChange" [mat-dialog-close]="data" cdkFocusInitial>Edit</button>
+  </div>
+</span>

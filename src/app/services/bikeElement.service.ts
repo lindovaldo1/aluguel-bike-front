@@ -12,20 +12,20 @@ export class BikeElementService{
     return this.http.get<BikeElement[]>(this.elementApiUrl)
   }
 
-  getById(id: number) {
-    return this.http.get<BikeElement[]>(`${this.elementApiUrl}${id}`)
+  getById(id: number): Observable<BikeElement> {
+    return this.http.get<BikeElement>(`${this.elementApiUrl}${id}`)
   }
 
-  create(element: BikeElement) {
-    return this.http.post(this.elementApiUrl, element);
+  create(element: BikeElement): Observable<BikeElement> {
+    return this.http.post<BikeElement>(this.elementApiUrl, element);
   }
 
-  edit(element: BikeElement) {
-    return this.http.put(`${this.elementApiUrl}${element.id}`, element);
+  edit(element: BikeElement): Observable<BikeElement>{
+    return this.http.put<BikeElement>(`${this.elementApiUrl}${element.id}`, element);
   }
 
   delete(id: number) {
-    return this.http.delete(`${this.elementApiUrl}${id}`);
+    return this.http.delete<BikeElement>(`${this.elementApiUrl}${id}`);
   }
 
 }

@@ -11,7 +11,7 @@ import { BikeDialogComponent } from '../bike-dialog/bike-dialog.component';
   templateUrl: './bike-table.component.html',
   styleUrls: ['./bike-table.component.scss'],
   providers: [BikeElementService],
-  
+
 })
 export class BikeTableComponent {
   @ViewChild(MatTable)
@@ -33,7 +33,7 @@ export class BikeTableComponent {
 
   openDialog(element: BikeElement | null):void{
     const dialogRef = this.dialog.open(BikeDialogComponent, {
-      height:'500px',
+      height:'538px',
       width: '300px',
       data: element === null ? {
         id: null,
@@ -58,7 +58,7 @@ export class BikeTableComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result !== undefined){
-        result.birthday = moment(result.birthday).format('YYYY-MM-DD')
+        result.birthdate = moment(result.birthdate).format('YYYY-MM-DD')
         if(this.dataSource.map(p => p.id).includes(result.id)){
           this.bikeElementService.edit(result)
             .subscribe(() => {
@@ -81,8 +81,8 @@ export class BikeTableComponent {
     this.openDialog(element)
   }
 
-  deleteElement(element: BikeElement):void{
-    this.bikeElementService.delete(element.id)
+  deleteElement(id: number):void{
+    this.bikeElementService.delete(id)
       .subscribe(() => {
         this.refrest()
       })

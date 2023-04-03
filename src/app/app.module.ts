@@ -1,3 +1,5 @@
+import { BikeTableComponent } from './components/bike/bike-table/bike-table.component';
+import { BikeDialogComponent } from './components/bike/bike-dialog/bike-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -27,9 +29,11 @@ import { LocalDatePipe } from './shared/pipe/local-date.pipe';
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,    
+    FooterComponent,
     UserDialogComponent,
     UserTableComponent,
+    BikeDialogComponent,
+    BikeTableComponent,
     LocalDateTimePipe,
     LocalDatePipe,
   ],

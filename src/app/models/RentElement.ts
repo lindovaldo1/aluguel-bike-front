@@ -8,5 +8,5 @@ export interface RentElement {
   createdAt: Date
   updatedAt: Date
   user: UserElement
-  bike: BikeElement
+  Bike: BikeElement
 }

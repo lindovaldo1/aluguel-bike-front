@@ -4,15 +4,42 @@
   <h1 *ngIf="isChange" mat-dialog-title>Edit Element</h1>
 
   <div mat-dialog-content>
-    <mat-form-field appearance="fill" style="width:248px;">
-      <mat-label>Name User</mat-label>
-      <input matInput [(ngModel)]="data.user.name">
-    </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Model Bike</mat-label>
-      <input matInput [(ngModel)]="data.bike">
-    </mat-form-field>
+     <!-- inicio do search for select item
+     https://material.angular.io/components/autocomplete/overview
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Name</mat-label>
+      <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field> -->
+
+    <span *ngIf="!isChange">
+      <mat-form-field appearance="fill" style="width:248px;">
+        <mat-label>User ID</mat-label>
+        <input type="number" matInput [(ngModel)]="user_id">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Bike ID</mat-label>
+        <input type="number" matInput [(ngModel)]="bike_id">
+      </mat-form-field>
+    </span>
+
+    <span *ngIf="isChange">
+      <mat-form-field appearance="fill" style="width:248px;">
+        <mat-label>Name User</mat-label>
+        <input matInput [(ngModel)]="data.user.name">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Model Bike</mat-label>
+        <input matInput [(ngModel)]="data.Bike.model">
+      </mat-form-field>
+    </span>
 
     <mat-form-field appearance="fill">
       <mat-label>Exit time</mat-label>

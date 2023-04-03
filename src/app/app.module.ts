@@ -1,7 +1,7 @@
-
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -14,11 +14,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BikeDialogComponent } from './components/bike/bike-dialog/bike-dialog.component';
-import { BikeTableComponent } from './components/bike/bike-table/bike-table.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BikeDialogComponent } from './components/bike/bike-dialog/bike-dialog.component';
+import { BikeTableComponent } from './components/bike/bike-table/bike-table.component';
 import { RentDialogComponent } from './components/rent/rent-dialog/rent-dialog.component';
 import { RentTableComponent } from './components/rent/rent-table/rent-table.component';
 import { UserDialogComponent } from './components/user/user-dialog/user-dialog.component';
@@ -27,6 +27,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { LocalDateTimePipe } from './shared/pipe/local-date-time.pipe';
 import { LocalDatePipe } from './shared/pipe/local-date.pipe';
+
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { LocalDatePipe } from './shared/pipe/local-date.pipe';
     LocalDatePipe,
     RentDialogComponent,
     RentTableComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -58,6 +60,8 @@ import { LocalDatePipe } from './shared/pipe/local-date.pipe';
     MatDatepickerModule,
     MatNativeDateModule,
     BrowserAnimationsModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
   ],
   providers: [
     LocalDateTimePipe,

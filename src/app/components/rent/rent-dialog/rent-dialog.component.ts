@@ -1,6 +1,9 @@
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { RentElement } from './../../../models/RentElement';
-import { Component, Inject } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { UserElement } from 'src/app/models/UserElement';
 
 @Component({
   selector: 'app-rent-dialog',
@@ -8,9 +11,9 @@ import { Component, Inject } from '@angular/core';
   styleUrls: ['./rent-dialog.component.scss']
 })
 export class RentDialogComponent {
-  element!: RentElement
   isChange!: boolean
-  date!: Date
+  user_id!: number
+  bike_id!: number
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
@@ -23,8 +26,6 @@ export class RentDialogComponent {
       this.isChange = true
     else
       this.isChange = false
-
-      console.log(this.data)
   }
 
   onClick():void{}

@@ -35,15 +35,14 @@ export class RentTableComponent {
   ngOnInit(): void {}
 
   openDialog(element: RentElement | null):void{
-    let variavel: BikeElement = element.bike
-    console.log(variavel)
+
     const dialogRef = this.dialog.open(RentDialogComponent, {
       height:'538px',
       width: '300px',
       data: element === null ? {
         id: null,
-        user: {},
-        bike: {},
+        user: '',
+        bike: '',
         exit_time: '',
         return_time: '',
         state: '',
@@ -52,7 +51,7 @@ export class RentTableComponent {
       }: {
         id: element.id,
         user: element.user,
-        bike: element.bike,
+        Bike: element.Bike,
         exit_time: element.exit_time,
         return_time: element.return_time,
         state: element.state,
@@ -61,19 +60,18 @@ export class RentTableComponent {
       }
     })
 
-
     dialogRef.afterClosed().subscribe(result => {
       if(result !== undefined){
         result.exit_time = moment(result.exit_time).format('YYYY-MM-DD')
         result.return_time = moment(result.return_time).format('YYYY-MM-DD')
         if(this.dataSource.map(p => p.id).includes(result.id)){
-          console.log(result)
           this.rentElementService.edit(result)
             .subscribe(() => {
               this.dataSource[result.id - 1] = result
               this.refresh()
             })
         }else{
+          console.log(result)
           this.rentElementService.create(result)
             .subscribe(()=> {
               this.dataSource.push(result)

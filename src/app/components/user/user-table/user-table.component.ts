@@ -17,7 +17,7 @@ export class UserTableComponent implements OnInit{
 
   @ViewChild(MatTable)
   table!: MatTable<any>
-  displayedColumns: string[] = ['id', 'name', 'email', 'birthday', 'state', 'created', 'updated', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'email', 'birthdate', 'state', 'created', 'updated', 'actions'];
   dataSource!:UserElement[]
 
   constructor(
@@ -27,6 +27,7 @@ export class UserTableComponent implements OnInit{
       this.userElementService.getAll()
         .subscribe((data: UserElement[]) => {
           this.dataSource = data
+          console.log(data)
         })
     }
 
@@ -40,7 +41,7 @@ export class UserTableComponent implements OnInit{
         id: null,
         name: '',
         email: null,
-        birthday: '',
+        birthdate: '',
         state: null,
         createdAt: null,
         updatedAt: null,
@@ -48,7 +49,7 @@ export class UserTableComponent implements OnInit{
         id: element.id,
         name: element.name,
         email: element.email,
-        birthday: element.birthday,//moment(element.birthday).format('DD-MM-YYYY'),
+        birthdate: element.birthdate,//moment(element.birthdate).format('DD-MM-YYYY'),
         state: element.state,
         createdAt: element.createdAt,
         updatedAt: element.updatedAt,
@@ -57,7 +58,7 @@ export class UserTableComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe(result => {
       if(result !== undefined){
-        result.birthday = moment(result.birthday).format('YYYY-MM-DD')
+        result.birthdate = moment(result.birthdate).format('YYYY-MM-DD')
         if(this.dataSource.map(p => p.id).includes(result.id)){
           this.userElementService.edit(result)
             .subscribe(() => {
@@ -80,8 +81,8 @@ export class UserTableComponent implements OnInit{
     this.openDialog(element)
   }
 
-  deleteElement(element: UserElement):void{
-    this.userElementService.delete(element.id)
+  deleteElement(id: number):void{
+    this.userElementService.delete(id)
       .subscribe(() => {
         this.refrest()
       })

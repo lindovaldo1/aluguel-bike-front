@@ -3,7 +3,7 @@ export interface UserElement {
   name: string
   email: string
   password: string
-  birthday: Date
+  birthdate: Date
   state: boolean
   createdAt: Date
   updatedAt: Date

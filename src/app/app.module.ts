@@ -24,6 +24,8 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { LocalDateTimePipe } from './shared/pipe/local-date-time.pipe';
 import { LocalDatePipe } from './shared/pipe/local-date.pipe';
+import { RentDialogComponent } from './components/rent/rent-dialog/rent-dialog.component';
+import { RentTableComponent } from './components/rent/rent-table/rent-table.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { LocalDatePipe } from './shared/pipe/local-date.pipe';
     BikeTableComponent,
     LocalDateTimePipe,
     LocalDatePipe,
+    RentDialogComponent,
+    RentTableComponent,
   ],
   imports: [
     BrowserModule,

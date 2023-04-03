@@ -18,20 +18,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserDialogComponent } from './components/user/user-dialog/user-dialog.component';
 import { UserTableComponent } from './components/user/user-table/user-table.component';
-import { ElementDialogComponent } from './shared/element-dialog/element-dialog.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { LocalDateTimePipe } from './shared/pipe/local-date-time.pipe';
 import { LocalDatePipe } from './shared/pipe/local-date.pipe';
-import { HomeComponent } from './views/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     HeaderComponent,
-    FooterComponent,
-    ElementDialogComponent,
+    FooterComponent,    
     UserDialogComponent,
     UserTableComponent,
     LocalDateTimePipe,

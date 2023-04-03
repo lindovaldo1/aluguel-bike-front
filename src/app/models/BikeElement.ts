@@ -1,4 +1,5 @@
 export interface BikeElement {
+  id: number
   model: string
   color: string
   fabrication_year: Date

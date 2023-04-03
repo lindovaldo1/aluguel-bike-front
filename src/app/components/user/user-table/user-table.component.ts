@@ -27,7 +27,6 @@ export class UserTableComponent implements OnInit{
       this.userElementService.getAll()
         .subscribe((data: UserElement[]) => {
           this.dataSource = data
-          console.log(data)
         })
     }
 
@@ -63,13 +62,13 @@ export class UserTableComponent implements OnInit{
           this.userElementService.edit(result)
             .subscribe(() => {
               this.dataSource[result.id - 1] = result
-              this.refrest()
+              this.refresh()
             })
         }else{
           this.userElementService.create(result)
             .subscribe(()=> {
               this.dataSource.push(result)
-              this.refrest()
+              this.refresh()
             })
         }
       }
@@ -84,10 +83,10 @@ export class UserTableComponent implements OnInit{
   deleteElement(id: number):void{
     this.userElementService.delete(id)
       .subscribe(() => {
-        this.refrest()
+        this.refresh()
       })
   }
-  refrest(){
+  refresh(){
     this.userElementService.getAll()
         .subscribe((data: UserElement[]) => {
           this.dataSource = data

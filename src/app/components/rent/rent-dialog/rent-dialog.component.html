@@ -1,1 +1,48 @@
-<p>rent-dialog works!</p>
+
+<span id="container">
+  <h1 *ngIf="!isChange" mat-dialog-title>Create Element</h1>
+  <h1 *ngIf="isChange" mat-dialog-title>Edit Element</h1>
+
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill" style="width:248px;">
+      <mat-label>Name User</mat-label>
+      <input matInput [(ngModel)]="data.user.name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Model Bike</mat-label>
+      <input matInput [(ngModel)]="data.bike">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Exit time</mat-label>
+      <input matInput
+             #resultPickerModel="ngModel"
+             [matDatepicker]="pickerExit"
+             [(ngModel)]="data.exit_time">
+      <mat-datepicker-toggle matIconSuffix [for]="pickerExit"></mat-datepicker-toggle>
+      <mat-datepicker #pickerExit></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Return time</mat-label>
+      <input matInput
+             #resultPickerModel="ngModel"
+             [matDatepicker]="pickerReturn"
+             [(ngModel)]="data.return_time">
+      <mat-datepicker-toggle matIconSuffix [for]="pickerReturn"></mat-datepicker-toggle>
+      <mat-datepicker #pickerReturn></mat-datepicker>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
+      <mat-label>State</mat-label>
+      <input matInput [(ngModel)]="data.state">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button *ngIf="!isChange" [mat-dialog-close]="data" cdkFocusInitial>Create</button>
+    <button mat-button *ngIf="isChange" [mat-dialog-close]="data" cdkFocusInitial>Edit</button>
+  </div>
+</span>

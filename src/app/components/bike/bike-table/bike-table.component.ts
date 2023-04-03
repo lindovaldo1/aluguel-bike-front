@@ -63,13 +63,13 @@ export class BikeTableComponent {
           this.bikeElementService.edit(result)
             .subscribe(() => {
               this.dataSource[result.id - 1] = result
-              this.refrest()
+              this.refresh()
             })
         }else{
           this.bikeElementService.create(result)
             .subscribe(()=> {
               this.dataSource.push(result)
-              this.refrest()
+              this.refresh()
             })
         }
       }
@@ -84,10 +84,10 @@ export class BikeTableComponent {
   deleteElement(id: number):void{
     this.bikeElementService.delete(id)
       .subscribe(() => {
-        this.refrest()
+        this.refresh()
       })
   }
-  refrest(){
+  refresh(){
     this.bikeElementService.getAll()
         .subscribe((data: BikeElement[]) => {
           this.dataSource = data

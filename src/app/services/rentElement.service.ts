@@ -15,19 +15,19 @@ export class RentElementService {
     return this.http.get<RentElement[]>(this.elementApiUrl)
   }
 
-  getById(id: number) {
-    return this.http.get<RentElement[]>(`${this.elementApiUrl}${id}`)
+  getById(id: number): Observable<RentElement> {
+    return this.http.get<RentElement>(`${this.elementApiUrl}${id}`)
   }
 
-  create(element: RentElement) {
-    return this.http.post(this.elementApiUrl, element);
+  create(element: RentElement): Observable<RentElement> {
+    return this.http.post<RentElement>(this.elementApiUrl, element);
   }
 
-  edit(element: RentElement) {
-    return this.http.put(`${this.elementApiUrl}${element.id}`, element);
+  edit(element: RentElement): Observable<RentElement> {
+    return this.http.put<RentElement>(`${this.elementApiUrl}${element.id}`, element);
   }
 
-  delete(id: number) {
-    return this.http.delete(`${this.elementApiUrl}${id}`);
+  delete(id: number): Observable<RentElement> {
+    return this.http.delete<RentElement>(`${this.elementApiUrl}${id}`);
   }
 }

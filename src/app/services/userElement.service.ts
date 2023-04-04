@@ -12,20 +12,21 @@ export class UserElementService{
     return this.http.get<UserElement[]>(this.elementApiUrl)
   }
 
-  getById(id: number) {
-    return this.http.get<UserElement[]>(`${this.elementApiUrl}${id}`)
+  getById(id: number): Observable<UserElement> {
+    return this.http.get<UserElement>(`${this.elementApiUrl}${id}`)
   }
 
-  create(element: UserElement) {
-    return this.http.post(this.elementApiUrl, element);
+  create(element: UserElement): Observable<UserElement> {
+    return this.http.post<UserElement>(this.elementApiUrl, element);
   }
 
-  edit(element: UserElement) {
-    return this.http.put(`${this.elementApiUrl}${element.id}`, element);
+  edit(element: UserElement): Observable<UserElement> {
+    console.log(element)
+    return this.http.put<UserElement>(`${this.elementApiUrl}${element.id}`, element);
   }
 
-  delete(id: number) {
-    return this.http.delete(`${this.elementApiUrl}${id}`);
+  delete(id: number): Observable<UserElement> {
+    return this.http.delete<UserElement>(`${this.elementApiUrl}${id}`);
   }
 
 }

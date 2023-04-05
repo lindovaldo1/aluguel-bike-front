@@ -30,7 +30,7 @@ export class BikeTableComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.role == 'user' && this.role != undefined){
-      this.displayedColumns.splice(5, 4)
+      this.displayedColumns.splice(6, 3)
     }
 
     this.bikeElementService.getAll()

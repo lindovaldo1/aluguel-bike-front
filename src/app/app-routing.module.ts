@@ -1,5 +1,4 @@
 import { LoginGuardService } from './guard/login-guard.service';
-import { AuthGuardService } from './guard/auth-guard.service';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BikeTableComponent } from './components/bike/bike-table/bike-table.component';

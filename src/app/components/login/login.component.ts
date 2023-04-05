@@ -41,7 +41,11 @@ export class LoginComponent {
 
         console.log(temp)
         this.router.navigateByUrl('users')
-      })
+      },
+        (error) => {
+          alert("Usuario ou senha invalidos")
+        }
+      )
 
     }
 

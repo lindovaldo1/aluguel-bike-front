@@ -26,7 +26,6 @@ import { RentDialogComponent } from './components/rent/rent-dialog/rent-dialog.c
 import { RentTableComponent } from './components/rent/rent-table/rent-table.component';
 import { UserDialogComponent } from './components/user/user-dialog/user-dialog.component';
 import { UserTableComponent } from './components/user/user-table/user-table.component';
-import { AuthGuardService } from './guard/auth-guard.service';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { LocalDateTimePipe } from './shared/pipe/local-date-time.pipe';
@@ -71,7 +70,6 @@ import { LocalDatePipe } from './shared/pipe/local-date.pipe';
   providers: [
     LocalDateTimePipe,
     LocalDatePipe,
-    AuthGuardService,
 
   ],
   bootstrap: [AppComponent]

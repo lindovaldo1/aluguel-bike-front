@@ -19,17 +19,25 @@ export class BikeTableComponent {
   displayedColumns: string[] = ['id', 'model', 'color', 'fabrication_year', 'wheels', 'state', 'created', 'updated', 'actions'];
   dataSource!:BikeElement[]
 
+  dataID!:BikeElement[]
+
+  role = localStorage.getItem('role')
+
   constructor(
     public dialog: MatDialog,
     public bikeElementService: BikeElementService
-    ){
-      this.bikeElementService.getAll()
+    ){}
+
+  ngOnInit(): void {
+    if(this.role == 'user' && this.role != undefined){
+      this.displayedColumns.splice(5, 4)
+    }
+
+    this.bikeElementService.getAll()
         .subscribe((data: BikeElement[]) => {
           this.dataSource = data
         })
-    }
-
-  ngOnInit(): void {}
+  }
 
   openDialog(element: BikeElement | null):void{
     const dialogRef = this.dialog.open(BikeDialogComponent, {
@@ -89,9 +97,9 @@ export class BikeTableComponent {
   }
   refresh(){
     this.bikeElementService.getAll()
-        .subscribe((data: BikeElement[]) => {
-          this.dataSource = data
-        })
+    .subscribe((data: BikeElement[]) => {
+      this.dataSource = data
+    })
   }
 
 }

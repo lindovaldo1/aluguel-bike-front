@@ -16,8 +16,8 @@ export class UserElementService{
     return this.http.get<UserElement[]>(this.elementApiUrl)
   }
 
-  getById(id: number): Observable<UserElement> {
-    return this.http.get<UserElement>(`${this.elementApiUrl}${id}`)
+  getById(id: number): Observable<UserElement[]> {
+    return this.http.get<UserElement[]>(`${this.elementApiUrl}${id}`)
   }
 
   getLogin(element: LoginElement){

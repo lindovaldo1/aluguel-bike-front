@@ -1,6 +1,6 @@
 <div id="container">
   <h2> Users list</h2>
-  <button mat-raised-button color="primary" (click)="openDialog(null)">Add Element</button>
+  <button  *ngIf="role == 'adm'" mat-raised-button color="primary" (click)="openDialog(null)">Add Element</button>
 
 <table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
 

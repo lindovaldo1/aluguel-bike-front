@@ -20,40 +20,32 @@ export class UserTableComponent implements OnInit{
   displayedColumns: string[] = ['id', 'name', 'email', 'birthdate', 'state', 'role', 'created', 'updated', 'actions'];
   dataSource!:UserElement[]
 
-  dataID!:UserElement
+  dataID!:UserElement[]
 
   role = localStorage.getItem('role')
 
   constructor(
     public dialog: MatDialog,
     public userElementService: UserElementService
-    ){
+    ){}
 
-      if(this.role == 'user'){
-        this.displayedColumns.splice(4, 4)
-        const userId = Number(localStorage.getItem('userId'))
+  ngOnInit(): void {
+    if(this.role == 'user' && this.role != undefined){
+      this.displayedColumns.splice(4, 4)
+      const userId = Number(localStorage.getItem('userId'))
 
-        this.userElementService.getById(userId)
-          .subscribe((data: UserElement) => {
-            console.log(data)
-            this.dataID = data
-          })
-      }else{
-        this.userElementService.getAll()
-          .subscribe((data: UserElement[]) => {
-            this.dataSource = data
-          })
-      }
-
-      // const userId = Number(localStorage.getItem('userId'))
-
-      // this.userElementService.getById(userId)
-      //     .subscribe((data: UserElement[]) => {
-      //       this.dataSource = data
-      //     })
+      this.userElementService.getById(userId)
+        .subscribe((data) => {
+          this.dataSource = data
+          console.log(this.dataID)
+        })
+    }else if(this.role == 'adm'){
+      this.userElementService.getAll()
+        .subscribe((data: UserElement[]) => {
+          this.dataSource = data
+        })
     }
-
-  ngOnInit(): void {}
+  }
 
   openDialog(element: UserElement | null):void{
     const dialogRef = this.dialog.open(UserDialogComponent, {
@@ -116,10 +108,19 @@ export class UserTableComponent implements OnInit{
       })
   }
   refresh(){
-    this.userElementService.getAll()
+    if(this.role == 'user' && this.role != undefined){
+      const userId = Number(localStorage.getItem('userId'))
+      this.userElementService.getById(userId)
+        .subscribe((data) => {
+          this.dataSource = data
+          console.log(this.dataID)
+        })
+    }else if(this.role == 'adm'){
+      this.userElementService.getAll()
         .subscribe((data: UserElement[]) => {
           this.dataSource = data
         })
+    }
   }
 
 }

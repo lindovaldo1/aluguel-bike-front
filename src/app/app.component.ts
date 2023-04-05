@@ -9,6 +9,7 @@ export class AppComponent implements OnInit{
   title = 'aluguel-bike-front';
 
   ngOnInit(){
+    console.log('teste')
     localStorage.clear()
   }
 }

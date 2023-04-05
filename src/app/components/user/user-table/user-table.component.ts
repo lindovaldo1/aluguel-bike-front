@@ -37,7 +37,6 @@ export class UserTableComponent implements OnInit{
       this.userElementService.getById(userId)
         .subscribe((data) => {
           this.dataSource = data
-          console.log(this.dataID)
         })
     }else if(this.role == 'adm'){
       this.userElementService.getAll()
@@ -79,7 +78,6 @@ export class UserTableComponent implements OnInit{
       if(result !== undefined){
         result.birthdate = moment(result.birthdate).format('YYYY-MM-DD')
         if(this.dataSource.map(p => p.id).includes(result.id)){
-          console.log(result)
           this.userElementService.edit(result)
             .subscribe(() => {
               this.dataSource[result.id - 1] = result
@@ -113,7 +111,6 @@ export class UserTableComponent implements OnInit{
       this.userElementService.getById(userId)
         .subscribe((data) => {
           this.dataSource = data
-          console.log(this.dataID)
         })
     }else if(this.role == 'adm'){
       this.userElementService.getAll()

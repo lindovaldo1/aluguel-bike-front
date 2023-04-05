@@ -29,7 +29,6 @@ export class UserElementService{
   }
 
   edit(element: UserElement): Observable<UserElement> {
-    console.log(element)
     return this.http.put<UserElement>(`${this.elementApiUrl}${element.id}`, element);
   }
 

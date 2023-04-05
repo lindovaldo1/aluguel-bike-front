@@ -26,8 +26,6 @@ export class LoginGuardService implements CanActivate{
 
       const auth = localStorage.getItem('auth');
 
-      console.log(auth)
-
       if (auth == 'true') {
         return true;
       }

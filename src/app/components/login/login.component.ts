@@ -12,8 +12,8 @@ import { UserElementService } from 'src/app/services/userElement.service';
 export class LoginComponent {
 
   formulario = new FormGroup({
-    email: new FormControl('a', [Validators.required]),
-    password: new FormControl('1234', [Validators.required])
+    email: new FormControl('lucas@email.com', [Validators.required]),
+    password: new FormControl('123', [Validators.required])
   })
   hide = true
 
@@ -39,7 +39,6 @@ export class LoginComponent {
         localStorage.setItem('role', temp.role)
         localStorage.setItem('auth', temp.auth)
 
-        console.log(temp)
         this.router.navigateByUrl('users')
       },
         (error) => {

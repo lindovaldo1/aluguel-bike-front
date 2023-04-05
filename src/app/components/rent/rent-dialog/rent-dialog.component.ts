@@ -18,6 +18,8 @@ export class RentDialogComponent {
   users!: UserElement[]
   bikes!: BikeElement[]
 
+  role = localStorage.getItem('role')
+
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: RentElement,
@@ -29,7 +31,9 @@ export class RentDialogComponent {
     @Inject(BikeElementService)
     public bikeElementService: BikeElementService,
 
-  ){
+  ){}
+
+  ngOnInit(): void {
 
     this.bikeElementService.getAll()
     .subscribe((data: BikeElement[]) => {
@@ -41,9 +45,7 @@ export class RentDialogComponent {
       this.users = data
     })
 
-  }
 
-  ngOnInit(): void {
     if(this.data.id != null)
       this.isChange = true
     else

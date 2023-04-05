@@ -24,6 +24,10 @@ export class RentElementService {
     return this.http.get<RentElement>(`${this.elementApiUrl}${id}`)
   }
 
+  // getUserById(id: number): Observable<RentElement[]> {
+  //   return this.http.get<RentElement[]>(`${this.elementApiUrl}${id}`)
+  // }
+
   create(element: RentElement): Observable<RentElement> {
     return this.http.post<RentElement>(this.elementApiUrl, element);
   }

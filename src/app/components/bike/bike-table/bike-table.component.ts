@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import * as moment from 'moment';
@@ -13,7 +13,7 @@ import { BikeDialogComponent } from '../bike-dialog/bike-dialog.component';
   providers: [BikeElementService],
 
 })
-export class BikeTableComponent {
+export class BikeTableComponent implements OnInit {
   @ViewChild(MatTable)
   table!: MatTable<any>
   displayedColumns: string[] = ['id', 'model', 'color', 'fabrication_year', 'wheels', 'state', 'created', 'updated', 'actions'];

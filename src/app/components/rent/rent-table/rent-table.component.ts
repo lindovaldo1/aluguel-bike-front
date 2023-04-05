@@ -23,18 +23,34 @@ export class RentTableComponent {
 
   users!: UserElement[]
 
+  role = localStorage.getItem('role')
+  userID = localStorage.getItem('userId')
+
   constructor(
     public dialog: MatDialog,
     @Inject(RentElementService)
     public rentElementService: RentElementService
-  ){
-    this.rentElementService.getAll()
+  ){}
+
+  ngOnInit(): void {
+    if(this.role == 'user' && this.role != undefined){
+      this.displayedColumns.splice(6, 3)
+
+      this.rentElementService.getAll()
+      .subscribe((data: RentElement[]) => {
+        this.dataSource = data.filter((user)=> (
+          user.user.id == Number(this.userID)
+        ))
+      })
+
+    }else{
+      this.rentElementService.getAll()
       .subscribe((data: RentElement[]) => {
         this.dataSource = data
       })
-  }
+    }
 
-  ngOnInit(): void {}
+  }
 
   openDialog(element: RentElement | null):void{
 
@@ -79,7 +95,6 @@ export class RentTableComponent {
             user: result.user,
             Bike: result.Bike,
           }
-          console.log(data)
           this.rentElementService.edit(data)
             .subscribe(() => {
               this.dataSource[result.id - 1] = result
@@ -88,8 +103,8 @@ export class RentTableComponent {
         }else{
           let data:RentElement = {
             id: 0,
-            user_id: result.user.id,
-            bike_id: result.Bike.id,
+            user_id: result.user,
+            bike_id: result.Bike,
             exit_time: result.exit_time,
             return_time: result.return_time,
             state: result.state,

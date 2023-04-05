@@ -69,13 +69,14 @@
     </mat-form-field>
 
 
-    <mat-form-field appearance="fill">
+    <mat-form-field *ngIf="role == 'adm'" appearance="fill">
       <mat-label>State</mat-label>
       <mat-select [(ngModel)]="data.state">
         <mat-option value="true">Actived</mat-option>
         <mat-option value="false">Desactived</mat-option>
       </mat-select>
     </mat-form-field>
+
   </div>
   <div mat-dialog-actions>
     <button mat-button (click)="onCancel()">Cancel</button>

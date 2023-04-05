@@ -2,7 +2,7 @@
 <span id="container">
     <h1 *ngIf="!isChange" mat-dialog-title>Create Element</h1>
     <h1 *ngIf="isChange" mat-dialog-title>Edit Element</h1>
-  
+
     <div mat-dialog-content>
       <mat-form-field appearance="fill" style="width:248px;">
         <mat-label>Model</mat-label>
@@ -11,7 +11,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Color</mat-label>
         <input matInput [(ngModel)]="data.color">
-      </mat-form-field>  
+      </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Fabrication</mat-label>
         <input matInput
@@ -20,15 +20,24 @@
                [(ngModel)]="data.fabrication_year">
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>  
+      </mat-form-field>
       <mat-form-field appearance="fill">
       <mat-label>Wheels</mat-label>
       <input type="number" matInput [(ngModel)]="data.wheels">
     </mat-form-field>
-      <mat-form-field appearance="fill">
+
+    <mat-form-field appearance="fill">
+      <mat-label>State</mat-label>
+      <mat-select [(ngModel)]="data.state">
+        <mat-option value="true">Actived</mat-option>
+        <mat-option value="false">Desactived</mat-option>
+      </mat-select>
+    </mat-form-field>
+      <!-- <mat-form-field appearance="fill">
         <mat-label>State</mat-label>
         <input matInput [(ngModel)]="data.state">
-      </mat-form-field>
+      </mat-form-field> -->
+
     </div>
     <div mat-dialog-actions>
       <button mat-button (click)="onCancel()">Cancel</button>
@@ -36,4 +45,3 @@
       <button mat-button *ngIf="isChange" [mat-dialog-close]="data" cdkFocusInitial>Edit</button>
     </div>
 </span>
-  

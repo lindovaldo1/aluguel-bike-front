@@ -1,3 +1,4 @@
+import { LoginElement } from './../../models/LoginElement';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,32 +13,37 @@ export class LoginComponent {
 
   formulario = new FormGroup({
     email: new FormControl('a', [Validators.required]),
-    password: new FormControl('a', [Validators.required])
+    password: new FormControl('1234', [Validators.required])
   })
-  hide = true;
-  userElementService!: UserElementService
+  hide = true
 
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private userElementService: UserElementService
   ){
   }
 
   login(){
     if(this.formulario.value.email != '' && this.formulario.value.password != ''){
 
-      let element = {
-        email: this.formulario.value.email!.toString(),
-        password: this.formulario.value.password!.toString()
+      let element: LoginElement = {
+        "email": this.formulario.get('email')?.value,
+        "password": this.formulario.get('password')?.value
       }
 
-      localStorage.setItem('email', element.email)
-      localStorage.setItem('password', element.password)
+      this.userElementService.getLogin(element).subscribe((data) => {
+        let temp = JSON.parse(JSON.stringify(data))
 
-    //   this.userElementService.login().subscribe((data) => {
-    //     console.log(data + ' 3')
-    //   })
-    // }
+        localStorage.setItem('userId', temp.userId)
+        localStorage.setItem('role', temp.role)
+        localStorage.setItem('auth', temp.auth)
+
+        console.log(temp)
+        this.router.navigateByUrl('users')
+      })
+
     }
+
   }
 }

@@ -1,3 +1,5 @@
+import { LoginElement } from './../models/LoginElement';
+import { FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -10,7 +12,7 @@ export class UserElementService{
   elementApiUrl = 'http://localhost:3000/users/'
   constructor(private http:HttpClient){}
 
-  getAll(): Observable<UserElement[]>{
+  getAll(){
     return this.http.get<UserElement[]>(this.elementApiUrl)
   }
 
@@ -18,12 +20,15 @@ export class UserElementService{
     return this.http.get<UserElement>(`${this.elementApiUrl}${id}`)
   }
 
-  // login(){
-  //   let element = {
-  //     email: localStorage.getItem('email'),
-  //     password: localStorage.getItem('password')
-  //   }
-  //   return this.http.get<LoginElement>(this.elementApiUrl+'login', element)
+  getLogin(element: LoginElement){
+    return this.http.post(this.elementApiUrl+'login', element)
+  }
+  // login(element: LoginElement){
+  //   // let data = {
+  //   //   "email": element.get('email')?.value,
+  //   //   "password": element.get('password')?.value
+  //   // }
+  //   return this.http.get(this.elementApiUrl+'login', element)
   // }
 
   create(element: UserElement): Observable<UserElement> {

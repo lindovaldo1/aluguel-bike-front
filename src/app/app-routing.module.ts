@@ -1,3 +1,5 @@
+import { LoginGuardService } from './guard/login-guard.service';
+import { AuthGuardService } from './guard/auth-guard.service';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BikeTableComponent } from './components/bike/bike-table/bike-table.component';
@@ -6,10 +8,30 @@ import { UserTableComponent } from './components/user/user-table/user-table.comp
 import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'users', component: UserTableComponent },
-  { path: 'bikes', component: BikeTableComponent },
-  { path: 'rents', component: RentTableComponent },
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+   },
+  {
+    path: 'users',
+    component: UserTableComponent,
+    canActivate: [LoginGuardService],
+  },
+  {
+    path: 'bikes',
+    component: BikeTableComponent,
+    canActivate: [LoginGuardService],
+  },
+  {
+    path: 'rents',
+    component: RentTableComponent,
+    canActivate: [LoginGuardService],
+  },
 ];
 
 @NgModule({

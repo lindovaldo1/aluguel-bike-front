@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserElement } from '../models/UserElement';
+import { LoginElement } from '../models/LoginElement';
 
 @Injectable()
 export class UserElementService{
@@ -14,6 +15,14 @@ export class UserElementService{
 
   getById(id: number): Observable<UserElement> {
     return this.http.get<UserElement>(`${this.elementApiUrl}${id}`)
+  }
+
+  login(){
+    let element = {
+      email: localStorage.getItem('email'),
+      password: localStorage.getItem('password')
+    }
+    return this.http.get<LoginElement>(this.elementApiUrl+'login', element)
   }
 
   create(element: UserElement): Observable<UserElement> {

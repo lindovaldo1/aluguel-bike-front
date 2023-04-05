@@ -54,7 +54,7 @@
       <button mat-icon-button (click)="editElement(element)" color="second">
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button (click)="deleteElement(element.id)" color="second">
+      <button *ngIf="role == 'adm'" mat-icon-button (click)="deleteElement(element.id)" color="second">
         <mat-icon>delete</mat-icon>
       </button>
   </ng-container>

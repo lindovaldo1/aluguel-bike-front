@@ -23,13 +23,6 @@ export class UserElementService{
   getLogin(element: LoginElement){
     return this.http.post(this.elementApiUrl+'login', element)
   }
-  // login(element: LoginElement){
-  //   // let data = {
-  //   //   "email": element.get('email')?.value,
-  //   //   "password": element.get('password')?.value
-  //   // }
-  //   return this.http.get(this.elementApiUrl+'login', element)
-  // }
 
   create(element: UserElement): Observable<UserElement> {
     return this.http.post<UserElement>(this.elementApiUrl, element);

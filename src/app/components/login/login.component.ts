@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserElementService } from 'src/app/services/userElement.service';
-import { LoginElement } from './../../models/LoginElement';
-import { UserElement } from 'src/app/models/UserElement';
 
 @Component({
   selector: 'app-login',
@@ -36,9 +34,10 @@ export class LoginComponent {
       localStorage.setItem('email', element.email)
       localStorage.setItem('password', element.password)
 
-      this.userElementService.login().subscribe((data) => {
-        console.log(data + ' 3')
-      })
+    //   this.userElementService.login().subscribe((data) => {
+    //     console.log(data + ' 3')
+    //   })
+    // }
     }
   }
 }

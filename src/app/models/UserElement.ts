@@ -5,6 +5,7 @@ export interface UserElement {
   password: string
   birthdate: Date
   state: boolean
+  role: string
   createdAt: Date
   updatedAt: Date
 }

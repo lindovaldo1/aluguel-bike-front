@@ -8,15 +8,26 @@
       <mat-label>Name</mat-label>
       <input matInput [(ngModel)]="data.name">
     </mat-form-field>
+
     <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
       <input matInput [(ngModel)]="data.email">
     </mat-form-field>
 
-    <!-- <mat-form-field appearance="fill">
-      <mat-label>Birthday</mat-label>
-      <input matInput [(ngModel)]="data.birthday">
-    </mat-form-field> -->
+
+    <span>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="password" id="password" matInput [type]="hide ? 'password' : 'text'" required [(ngModel)]="data.password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="!isChange">
+        Password is <strong>required</strong>
+      </mat-error>
+      </mat-form-field>
+    </span>
+
 
     <mat-form-field appearance="fill">
       <mat-label>Birthdate</mat-label>
@@ -28,11 +39,27 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-
     <mat-form-field appearance="fill">
       <mat-label>State</mat-label>
-      <input matInput [(ngModel)]="data.state">
+      <mat-select [(ngModel)]="data.state">
+        <mat-option value="true">Actived</mat-option>
+        <mat-option value="false">Desactived</mat-option>
+      </mat-select>
     </mat-form-field>
+
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>State</mat-label>
+      <input matInput [(ngModel)]="data.state">
+    </mat-form-field> -->
+
+    <mat-form-field appearance="fill">
+      <mat-label>Permission</mat-label>
+      <mat-select [(ngModel)]="data.role">
+        <mat-option value="user">Comum</mat-option>
+        <mat-option value="adm">Administrator</mat-option>
+      </mat-select>
+    </mat-form-field>
+
   </div>
   <div mat-dialog-actions>
     <button mat-button (click)="onCancel()">Cancel</button>

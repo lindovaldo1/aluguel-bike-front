@@ -5,31 +5,38 @@
 
   <div mat-dialog-content>
 
-     <!-- inicio do search for select item
-     https://material.angular.io/components/autocomplete/overview
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Name</mat-label>
-      <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-          {{option.name}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field> -->
-
-    <span *ngIf="!isChange">
-      <mat-form-field appearance="fill" style="width:248px;">
+    <span >
+      <!-- <mat-form-field appearance="fill" style="width:248px;">
         <mat-label>User ID</mat-label>
         <input type="number" matInput [(ngModel)]="user_id">
+      </mat-form-field> -->
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>User</mat-label>
+        <mat-select [(ngModel)]="data.user">
+          <mat-option *ngFor="let user of users" [value]="user.id">
+            {{ user.name }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
+        <mat-label>Bike</mat-label>
+        <mat-select [(ngModel)]="data.Bike">
+          <mat-option *ngFor="let bike of bikes" [value]="bike.id">
+            {{ bike.model }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- <mat-form-field appearance="fill">
         <mat-label>Bike ID</mat-label>
         <input type="number" matInput [(ngModel)]="bike_id">
-      </mat-form-field>
+      </mat-form-field> -->
     </span>
 
-    <span *ngIf="isChange">
+    <!-- <span *ngIf="isChange">
       <mat-form-field appearance="fill" style="width:248px;">
         <mat-label>Name User</mat-label>
         <input matInput [(ngModel)]="data.user.name">
@@ -39,7 +46,7 @@
         <mat-label>Model Bike</mat-label>
         <input matInput [(ngModel)]="data.Bike.model">
       </mat-form-field>
-    </span>
+    </span> -->
 
     <mat-form-field appearance="fill">
       <mat-label>Exit time</mat-label>
@@ -64,7 +71,10 @@
 
     <mat-form-field appearance="fill">
       <mat-label>State</mat-label>
-      <input matInput [(ngModel)]="data.state">
+      <mat-select [(ngModel)]="data.state">
+        <mat-option value="true">Actived</mat-option>
+        <mat-option value="false">Desactived</mat-option>
+      </mat-select>
     </mat-form-field>
   </div>
   <div mat-dialog-actions>

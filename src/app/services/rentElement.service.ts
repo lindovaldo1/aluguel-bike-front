@@ -1,7 +1,9 @@
-import { Observable } from 'rxjs';
-import { RentElement } from '../models/RentElement';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { UserElementService } from 'src/app/services/userElement.service';
+import { RentElement } from '../models/RentElement';
+import { BikeElementService } from './bikeElement.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,10 @@ import { Injectable } from '@angular/core';
 export class RentElementService {
 
   elementApiUrl = 'http://localhost:3000/rents/'
-  constructor(private http:HttpClient){}
+  constructor(
+    private userElementService: UserElementService,
+    // private bikeElementService: BikeElementService,
+    private http:HttpClient){}
 
   getAll(): Observable<RentElement[]>{
     return this.http.get<RentElement[]>(this.elementApiUrl)

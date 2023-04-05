@@ -17,7 +17,7 @@ export class UserTableComponent implements OnInit{
 
   @ViewChild(MatTable)
   table!: MatTable<any>
-  displayedColumns: string[] = ['id', 'name', 'email', 'birthdate', 'state', 'created', 'updated', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'email', 'birthdate', 'state', 'role', 'created', 'updated', 'actions'];
   dataSource!:UserElement[]
 
   constructor(
@@ -40,25 +40,31 @@ export class UserTableComponent implements OnInit{
         id: null,
         name: '',
         email: null,
+        password: '',
         birthdate: '',
         state: null,
+        role: 'user',
         createdAt: null,
         updatedAt: null,
       }: {
         id: element.id,
         name: element.name,
         email: element.email,
-        birthdate: element.birthdate,//moment(element.birthdate).format('DD-MM-YYYY'),
+        password: element.password,
+        birthdate: element.birthdate,
         state: element.state,
+        role: element.role,
         createdAt: element.createdAt,
         updatedAt: element.updatedAt,
       }
     })
 
     dialogRef.afterClosed().subscribe(result => {
+
       if(result !== undefined){
         result.birthdate = moment(result.birthdate).format('YYYY-MM-DD')
         if(this.dataSource.map(p => p.id).includes(result.id)){
+          console.log(result)
           this.userElementService.edit(result)
             .subscribe(() => {
               this.dataSource[result.id - 1] = result

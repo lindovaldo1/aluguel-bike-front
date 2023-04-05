@@ -11,7 +11,7 @@ export class UserDialogComponent {
   element!: UserElement
   isChange!: boolean
   date!: Date
-
+  hide = true
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: UserElement,

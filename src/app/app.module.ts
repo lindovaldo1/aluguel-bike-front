@@ -21,6 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BikeDialogComponent } from './components/bike/bike-dialog/bike-dialog.component';
 import { BikeTableComponent } from './components/bike/bike-table/bike-table.component';
+import { LoginComponent } from './components/login/login.component';
 import { RentDialogComponent } from './components/rent/rent-dialog/rent-dialog.component';
 import { RentTableComponent } from './components/rent/rent-table/rent-table.component';
 import { UserDialogComponent } from './components/user/user-dialog/user-dialog.component';
@@ -29,7 +30,6 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { LocalDateTimePipe } from './shared/pipe/local-date-time.pipe';
 import { LocalDatePipe } from './shared/pipe/local-date.pipe';
-import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({

@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserElement } from '../models/UserElement';
-import { LoginElement } from '../models/LoginElement';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserElementService{
   elementApiUrl = 'http://localhost:3000/users/'
   constructor(private http:HttpClient){}
@@ -17,13 +18,13 @@ export class UserElementService{
     return this.http.get<UserElement>(`${this.elementApiUrl}${id}`)
   }
 
-  login(){
-    let element = {
-      email: localStorage.getItem('email'),
-      password: localStorage.getItem('password')
-    }
-    return this.http.get<LoginElement>(this.elementApiUrl+'login', element)
-  }
+  // login(){
+  //   let element = {
+  //     email: localStorage.getItem('email'),
+  //     password: localStorage.getItem('password')
+  //   }
+  //   return this.http.get<LoginElement>(this.elementApiUrl+'login', element)
+  // }
 
   create(element: UserElement): Observable<UserElement> {
     return this.http.post<UserElement>(this.elementApiUrl, element);

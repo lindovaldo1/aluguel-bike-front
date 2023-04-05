@@ -3,7 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BikeElement } from '../models/BikeElement';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class BikeElementService{
   elementApiUrl = 'http://localhost:3000/bikes/'
   constructor(private http:HttpClient){}
